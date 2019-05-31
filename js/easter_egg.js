@@ -11,7 +11,7 @@
   function hi () {
   "use strict";
     // type 'hi' on your keyboard
-    var key = [72,73];
+    var key = [32];
     var ck = 0;
     var max = key.length;
 
