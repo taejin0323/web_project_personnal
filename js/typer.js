@@ -21,7 +21,6 @@ let meter = new FPSMeter({
 
 let score = 0;
 let lives = 10;
-let caseSensitive = true;
 
 let center = {
   x: canvas.width / 2,
@@ -127,10 +126,13 @@ function createLetters () {
     let dY = center.y - y;
     let norm = Math.sqrt(dX ** 2 + dY ** 2);
     let speed = letter.lowestSpeed + Math.random() * (letter.highestSpeed - letter.lowestSpeed);
+    let code = htmlList[Math.random()*10];
+
     letters.push({
       x,
       y,
-      code: Math.random() < 0.5 ? Math.floor(Math.random() * 25 + 65) : Math.floor(Math.random() * 25 + 97),
+      code,
+      //Math.random() < 0.5 ? Math.floor(Math.random() * 25 + 65) : Math.floor(Math.random() * 25 + 97),
       speedX: dX / norm * speed,
       speedY: dY / norm * speed
     });
@@ -180,39 +182,15 @@ function type (i, l) {
   }
 }
 
-function changeCase () {
-  caseSensitive = !caseSensitive;
-  if (caseSensitive) {
-    document.getElementById('change-case').innerHTML = '';
-  } else {
-    document.getElementById('change-case').innerHTML = 'in';
-  }
-}
-
 function keyDownHandler (e) {
   for (let i = letters.length - 1; i >= 0; i--) {
     let l = letters[i];
-    if (caseSensitive) {
-      if (e.shiftKey) {
-        if (e.keyCode === l.code) {
-          type(i, l);
-          return;
-        }
-      } else {
-        if (e.keyCode + 32 === l.code) {
-          type(i, l);
-          return;
-        }
-      }
-    } else {
-      if (e.keyCode === l.code || e.keyCode + 32 === l.code) {
-        type(i, l);
-        return;
-      }
+    if (e.localeCompare(l)==0) {
+      type(i, l);
+      return;
+    }else{
+      score--;
     }
-  }
-  if (!e.shiftKey) {
-    score--;
   }
 }
 
