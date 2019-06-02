@@ -1,5 +1,3 @@
-/* global performance */
-/* global FPSMeter */
 let canvas = document.getElementById('canvas');
 let ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
@@ -9,6 +7,7 @@ const getTime = typeof performance === 'function' ? performance.now : Date.now;
 const FRAME_DURATION = 1000 / 58;
 let then = getTime();
 let acc = 0;
+/*
 FPSMeter.theme.colorful.container.height = '40px';
 let meter = new FPSMeter({
   left: canvas.width - 130 + 'px',
@@ -18,6 +17,7 @@ let meter = new FPSMeter({
   heat: 1,
   graph: 1
 });
+*/
 
 let score = 0;
 let lives = 10;
@@ -25,13 +25,13 @@ let lives = 10;
 let center = {
   x: canvas.width / 2,
   y: canvas.height / 2,
-  radius: 20,
-  color: '#FF0000'
+  radius: 25,
+  color: '#87CEEB'
 };
 
 let letter = {
   font: '20px Arial',
-  color: '#0095DD',
+  color: '#B22222',
   size: 30,
   highestSpeed: 1.6,
   lowestSpeed: 0.6,
@@ -58,10 +58,12 @@ let label = {
 
 let letters = [];
 let particles = [];
+var keysDown = new Array();
+var ck=0;
+var key = new Array();
+var word2;
 
-draw();
-document.addEventListener('keydown', keyDownHandler);
-window.addEventListener('resize', resizeHandler);
+
 
 function draw () {
   let now = getTime();
@@ -77,13 +79,13 @@ function draw () {
   } else {
     ms = 0;
   }
-  meter.tick();
+  //meter.tick();
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   drawCircle(center);
   ctx.font = letter.font;
   ctx.fillStyle = letter.color;
   for (let l of letters) {
-    ctx.fillText(String.fromCharCode(l.code), l.x, l.y);
+    ctx.fillText(htmlList[l.code], l.x, l.y);
   }
   for (let p of particles) {
     drawCircle(p);
@@ -92,6 +94,8 @@ function draw () {
   ctx.fillStyle = label.color;
   ctx.fillText('Score: ' + score, 10, label.margin);
   ctx.fillText('Lives: ' + lives, canvas.width - 110, label.margin);
+  ctx.fillText('Text: ' + keysDown + ' ' + word2, 10, label.margin+20);
+  ctx.fillText('ck: ' + ck +' ' + keysDown + ' ' + key, 10, label.margin+35);
   processParticles(frames);
   createLetters();
   removeLetters(frames);
@@ -126,12 +130,11 @@ function createLetters () {
     let dY = center.y - y;
     let norm = Math.sqrt(dX ** 2 + dY ** 2);
     let speed = letter.lowestSpeed + Math.random() * (letter.highestSpeed - letter.lowestSpeed);
-    let code = htmlList[Math.random()*10];
 
     letters.push({
       x,
       y,
-      code,
+      code: Math.floor(Math.random()*htmlList.length),
       //Math.random() < 0.5 ? Math.floor(Math.random() * 25 + 65) : Math.floor(Math.random() * 25 + 97),
       speedX: dX / norm * speed,
       speedY: dY / norm * speed
@@ -168,7 +171,7 @@ function intersects (x1, y1, w1, h1, x2, y2, w2, h2) {
 
 function type (i, l) {
   letters.splice(i, 1);
-  score++;
+  score+=100;
   for (let j = 0; j < particle.total; j++) {
     let c = generateRandomRgbColor();
     particles.push({
@@ -183,20 +186,43 @@ function type (i, l) {
 }
 
 function keyDownHandler (e) {
+
+  var word = String.fromCharCode(e.keyCode+32);
+  word2 = e.keyCode;
+  keysDown += word;
+
   for (let i = letters.length - 1; i >= 0; i--) {
-    let l = letters[i];
-    if (e.localeCompare(l)==0) {
+    key = htmlList[letters[i].code];
+    var l = letters[i].code;
+
+    if (keysDown.localeCompare(key)) {
       type(i, l);
+
       return;
-    }else{
-      score--;
+    }
+    if (e.keyCode === 13) {
+      keysDown = [];
+      break;
     }
   }
+  if (!e.shiftKey) {
+    score-=100;
+  }
 }
+
 
 function resizeHandler () {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
   center.x = canvas.width / 2;
   center.y = canvas.height / 2;
+}
+
+
+function game() {
+  document.getElementById("frame_intro").style.display = "none";
+  document.getElementById("frame_game").style.display = "block";
+  draw();
+  document.addEventListener('keydown', keyDownHandler);
+  window.addEventListener('resize', resizeHandler);
 }

@@ -7,25 +7,40 @@
   <title>Web programming project</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
   <link rel="stylesheet" href="./css/typer.css">
-  <link rel="stylesheet" href="./css/easter_egg.css">
+  <script src="./js/ASCII_keycode.js"></script>
+  <script src="./js/listOfTags.js"></script>
 </head>
 
 <body>
+  <!-- 첫 화면 -->
+  <div id="frame_intro">
+    <div class="main">
+      <div class="border">
+        <span class="heading">개인 프로젝트</span>
+        <p class="sub-heading">Typing game with HTML tags</p>
+      </div>
+      <input id="start" type="button" value="START" onclick="game()">
+    </div>
+  </div>
 
-  <canvas id="canvas">
-    <pre>
-      Your browser doesn't support HTML5's 'Canvas'.
-      The HTML 'canvas' element is used to draw graphics, on the fly, via JavaScript.
+  <!-- 게임 화면 -->
+  <div id="frame_game">
+    <canvas id="canvas">
+      <pre>
+        Your browser doesn't support HTML5's 'Canvas'.
+        The HTML 'canvas' element is used to draw graphics, on the fly, via JavaScript.
 
-      Browsers which support 'Canvas'
+        Browsers which support 'Canvas'
 
-    <a href="https://community.canvaslms.com/docs/DOC-10720">Which browsers does Canvas support?</a><br>
-    <a href="https://caniuse.com/#feat=canvas">Canvas(basic support)</a>
-  </pre>
-  </canvas>
+      <a href="https://community.canvaslms.com/docs/DOC-10720">Which browsers does Canvas support?</a><br>
+      <a href="https://caniuse.com/#feat=canvas">Canvas(basic support)</a>
+    </pre>
+    </canvas>
+  </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fpsmeter/0.3.1/fpsmeter.min.js"></script>
   <script src="./js/typer.js"></script>
+  <script src="./js/easter_egg.js"></script>
 </body>
 
 </html>

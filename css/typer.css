@@ -1,5 +1,6 @@
 * {
   margin: 0;
+  padding: 0;
 }
 
 canvas {
@@ -11,4 +12,81 @@ canvas {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+}
+
+#frame_intro {
+  width:100%;
+  height:100%;
+  display: block;
+}
+  #start {
+    position:absolute;
+
+    margin-top:150px;
+    width:120px;
+    height:50px;
+
+    background: #FFFFFF; /* default */
+    background: -moz-linear-gradient(top center, #FFFFFF, #A0A0A0);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #FFFFFF), color-stop(1.00, #A0A0A0));
+    background: -ms-linear-gradient(top center, #FFFFFF, #A0A0A0);
+    background: linear-gradient(to bottom, #ffffff, #A0A0A0);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient (GradientType=0, startColorstr=#ffffff, endColorstr=#A0A0A0)";
+
+    border:2px skyblue outset;
+    border-radius:10px;
+
+    font-size:30px;
+    font-weight:bold;
+  }
+  #start:hover {
+  box-shadow:0 0 3pt 2pt white;
+  cursor:pointer;
+  cursor:hand;
+}
+
+#frame_game {
+  width:100%;
+  height:100%;
+  display: none;
+}
+
+
+.main {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #87CEEB;
+  position: relative;
+}
+
+.border {
+  border: 7px solid rgba(0,0,0,0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 40px;
+  padding-top: 30px;
+  position: relative;
+}
+
+.heading {
+  font-family: 'Oswald', sans-serif;
+  font-size: 70px;
+  color: white;
+/*   border: 10px solid rgba(0,0,0,0.4);
+  padding: 20px; */
+}
+
+.sub-heading {
+  color: white;
+  font-family: 'Satisfy', cursive;
+  font-size: 22px;
+  position: absolute;
+  bottom: -18px;
+  background-color: #87CEEB;
+  padding: 0 20px 0 20px;
 }

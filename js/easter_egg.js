@@ -16,7 +16,6 @@
     var max = key.length;
 
     var hi = function() {
-
       var shock = document.createElement('div');
       var img = new Image;
       img.src = data;
@@ -45,7 +44,6 @@
     };
 
     var record = function(e) {
-
       if ( e.which === key[ck] ) {
         ck++;
       } else {
@@ -56,7 +54,6 @@
         hi();
         ck = 0;
       }
-
     };
 
     var init = function(data) {
@@ -64,7 +61,6 @@
     };
 
     var data = 'https://weichiachang.github.io/easter-eggs-mobile/images/hi.gif';
-
     init(data);
   }
 
