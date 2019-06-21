@@ -7,6 +7,7 @@
 #canvas_1 {
   background:#eee;
   display: none;
+  position:relative;
 }
 
 #canvas_2 {
@@ -43,6 +44,39 @@
   box-shadow:0 0 3pt 2pt white;
   cursor:pointer;
   cursor:hand;
+}
+
+#record {
+  position:absolute;
+
+  margin-top:200px;
+  width:150px;
+  height:50px;
+
+  background: #FFFFFF; /* default */
+  background: -moz-linear-gradient(top center, #FFFFFF, #A0A0A0);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #FFFFFF), color-stop(1.00, #A0A0A0));
+  background: -ms-linear-gradient(top center, #FFFFFF, #A0A0A0);
+  background: linear-gradient(to bottom, #ffffff, #A0A0A0);
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient (GradientType=0, startColorstr=#ffffff, endColorstr=#A0A0A0)";
+
+  border:2px skyblue outset;
+  border-radius:10px;
+
+  font-size:30px;
+  font-weight:bold;
+}
+#record:hover {
+box-shadow:0 0 3pt 2pt white;
+cursor:pointer;
+cursor:hand;
+}
+
+#view_record {
+  width:100%;
+  height:100vh;
+  display: none;
+  background-color: #87CEEB;
 }
 
 #frame_game {
@@ -111,6 +145,16 @@
   padding: 20px; */
 }
 
+.title-heading {
+  color: red;
+  font-family: 'Satisfy', cursive;
+  font-size: 35px;
+  position: absolute;
+  bottom: 200px;
+  background-color: #87CEEB;
+  padding: 0 20px 0 20px;
+}
+
 .sub-heading {
   color: white;
   font-family: 'Satisfy', cursive;
@@ -121,7 +165,24 @@
   padding: 0 20px 0 20px;
 }
 
+.top {
+  position: absolute;
+}
 
+.go-back {
+  background: #FFFFFF; /* default */
+  background: -moz-linear-gradient(top center, #FFFFFF, #A0A0A0);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.00, #FFFFFF), color-stop(1.00, #A0A0A0));
+  background: -ms-linear-gradient(top center, #FFFFFF, #A0A0A0);
+  background: linear-gradient(to bottom, #ffffff, #A0A0A0);
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient (GradientType=0, startColorstr=#ffffff, endColorstr=#A0A0A0)";
+
+  border:2px gray outset;
+  border-radius:15px;
+
+  font-size:30px;
+  font-weight:bold;
+}
 
 #line {
   border: 3px solid #FFA3D4;

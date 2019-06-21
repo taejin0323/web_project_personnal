@@ -1,7 +1,7 @@
 let canvas_1 = document.getElementById('canvas_1');
 let ctx_1 = canvas_1.getContext('2d');
 canvas_1.width = window.innerWidth;
-canvas_1.height = window.innerHeight;
+canvas_1.height = window.innerHeight-50;
 
 
 function dropLetters(){
@@ -16,13 +16,14 @@ function dropLetters(){
       code: Math.floor(Math.random()*htmlList.length),
       //Math.random() < 0.5 ? Math.floor(Math.random() * 25 + 65) : Math.floor(Math.random() * 25 + 97),
       speedX: 0,
-      speedY: Math.random()*4
+      speedY: Math.random()*3
     });
   }
 }
 
 function removeLetters_1(frames){
   for (let l of letters) {
+    localStorage.setItem(lives, score);
     if (l.y>canvas_1.height) {
       if (--lives === 0) {
         window.alert('GAME OVER!');
@@ -30,6 +31,7 @@ function removeLetters_1(frames){
       } else if (lives > 0) {
         window.alert('START AGAIN!');
         letters = [];
+        score=0;
       }
       break;
     } else {

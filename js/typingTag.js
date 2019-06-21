@@ -1,7 +1,7 @@
 let canvas = document.getElementById('canvas_2');
 let ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+canvas.height = window.innerHeight-50;
 
 const getTime = typeof performance === 'function' ? performance.now : Date.now;
 const FRAME_DURATION = 1000 / 58;
@@ -148,6 +148,7 @@ function createLetters () {
 function removeLetters (frames) {
   for (let l of letters) {
     if (intersects(l.x, l.y, letter.size, letter.size, center.x, center.y, center.radius, center.radius)) {
+      localStorage.setItem(lives, score);
       if (--lives === 0) {
         window.alert('GAME OVER!');
         window.location.reload(false);
@@ -155,6 +156,7 @@ function removeLetters (frames) {
         window.alert('START AGAIN!');
         letters = [];
         particles = [];
+        score=0;
       }
       break;
     } else {
@@ -216,11 +218,6 @@ function resizeHandler () {
   center.y = canvas.height / 2;
 }
 
-function nextPage() {
-  document.getElementById("frame_intro").style.display = "none";
-  document.getElementById("frame_game").style.display = "block";
-}
-
 function game_2() {
   document.getElementById("frame_game").style.display = "none";
   document.getElementById("defence_game").style.display = "block";
@@ -229,3 +226,22 @@ function game_2() {
   document.addEventListener('keydown', keyDownHandler);
   window.addEventListener('resize', resizeHandler);
 }
+
+function endGame() {
+  window.location.reload(false);
+}
+
+function nextPage() {
+  document.getElementById("frame_intro").style.display = "none";
+  document.getElementById("frame_game").style.display = "block";
+}
+/*
+function viewRecord() {
+  document.getElementById("frame_intro").style.display = "none";
+  document.getElementById("view_record").style.display = "block";
+
+  var board = document.getElementById("score_board");
+
+  board.innerHTML = loaclStorage.getItem("5");
+}
+*/

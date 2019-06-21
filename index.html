@@ -21,26 +21,38 @@
         <p class="sub-heading">Typing game with HTML tags</p>
       </div>
       <input id="start" type="button" value="START" onclick="nextPage()">
+      <!--<input id="record" type="button" value="RECORD" onclick="viewRecord()">-->
     </div>
   </div>
+
+  <!-- 결과 화면
+  <div id="view_record">
+    <div id="score_board">
+      hi
+    </div>
+  </div>
+ -->
 
   <!-- 게임 선택 화면 -->
   <div id="frame_game">
     <div class="main_2">
       <div class="choose border">
-        <p class="sub-heading">Acid Rain</p>
-        <input type="image" src="img/defence_game.png" style="width:350px" onclick="game_1()">
+        <p class="title-heading">Acid Rain</p>
+        <p class="sub-heading">떨어지는 글자를 막으세요!</p>
+        <input type="image" src="img/rain_game.jpg" style="width:350px" onclick="game_1()">
         <!--<img src="img/defence_game.png" style="width:400px;">-->
       </div>
       <div class="choose border">
-        <p class="sub-heading">Defence Game</p>
-        <input type="image" src="img/defence_game.png" style="width:350px" onclick="game_2()">
+        <p class="title-heading">Defence Game</p>
+        <p class="sub-heading">가운데로 다가오는 글자를 막으세요!</p>
+        <input type="image" src="img/defence_game.jpg" style="width:350px" onclick="game_2()">
       </div>
     </div>
   </div>
 
   <!-- 산성비 게임 화면 -->
   <div id="rain_game">
+
     <canvas id="canvas_1">
       <pre>
         Your browser doesn't support HTML5's 'Canvas'.
@@ -57,7 +69,7 @@
         <a href="https://caniuse.com/#feat=canvas">Canvas(basic support)</a>
       </pre>
     </canvas>
-    <script src="./js/acidRain.js"></script>
+    <input class="go-back" type="button" value="돌아가기" onclick="location.reload()"/>
   </div>
 
   <!-- 디펜스 게임 화면 -->
@@ -78,8 +90,10 @@
         <a href="https://caniuse.com/#feat=canvas">Canvas(basic support)</a>
       </pre>
     </canvas>
+    <input class="go-back" type="button" value="돌아가기" onclick="location.reload()"/>
   </div>
 
+  <script src="./js/acidRain.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fpsmeter/0.3.1/fpsmeter.min.js"></script>
   <script src="./js/typingTag.js"></script>
 </body>

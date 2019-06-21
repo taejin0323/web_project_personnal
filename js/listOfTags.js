@@ -9,6 +9,12 @@ String.prototype.toKeyCodes = function() {
 
 // List of HTML tags
 var htmlList = [
-  "html", "head", "meta", "base", "link", "style", "title", "address", "article", "a"
-
+  "doctype", "title", "link", "meta", "style",
+  "strong", "em", "abbr", "acronym", "address", "bdo", "blockquote", "cite", "q", "code", "ins", "del", "dfn", "kbd", "pre", "samp", "var", "br",
+   "base",
+  "img", "area", "map", "param", "object",
+  "ul", "ol", "li", "dl", "dt", "dd",
+  "table", "tr", "td", "th", "tbody", "thead", "tfoot", "col", "colgroup", "caption",
+  "form", "input", "textarea", "select", "option", "optgroup", "button", "label", "fieldset", "legend",
+  "script", "noscript"
 ]
