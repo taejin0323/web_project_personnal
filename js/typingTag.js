@@ -1,4 +1,4 @@
-let canvas = document.getElementById('canvas');
+let canvas = document.getElementById('canvas_2');
 let ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
@@ -20,7 +20,7 @@ let meter = new FPSMeter({
 */
 
 let score = 0;
-let lives = 10;
+let lives = 5;
 
 let center = {
   x: canvas.width / 2,
@@ -51,7 +51,7 @@ let particle = {
 };
 
 let label = {
-  font: '24px Arial',
+  font: '30px Arial',
   color: '#0095DD',
   margin: 20
 };
@@ -92,10 +92,13 @@ function draw () {
   }
   ctx.font = label.font;
   ctx.fillStyle = label.color;
-  ctx.fillText('Score: ' + score, 10, label.margin);
-  ctx.fillText('Lives: ' + lives, canvas.width - 110, label.margin);
-  ctx.fillText('Text: ' + keysDown + ' ' + word2, 10, label.margin+20);
-  ctx.fillText('ck: ' + ck +' ' + keysDown + ' ' + key, 10, label.margin+35);
+  ctx.fillText('Score: ' + score, 10, label.margin + 20);
+  ctx.fillText('Lives: ' + lives, canvas.width - 130, label.margin + 20);
+  ctx.fillText('Your input: ' + keysDown, canvas_1.width/2 - 400, canvas_1.height-50);
+  /* text 용
+  ctx.fillText('Text: ' + keysDown + ' ' + word2, 10, label.margin+40);
+  ctx.fillText('ck: ' + ck +' ' + keysDown + ' ' + key, 10, label.margin+60);
+  */
   processParticles(frames);
   createLetters();
   removeLetters(frames);
@@ -186,7 +189,6 @@ function type (i, l) {
 }
 
 function keyDownHandler (e) {
-
   var word = String.fromCharCode(e.keyCode+32);
   word2 = e.keyCode;
   keysDown += word;
@@ -205,9 +207,7 @@ function keyDownHandler (e) {
       break;
     }
   }
-
 }
-
 
 function resizeHandler () {
   canvas.width = window.innerWidth;
@@ -216,10 +216,15 @@ function resizeHandler () {
   center.y = canvas.height / 2;
 }
 
+function nextPage() {
+  document.getElementById("frame_intro").style.display = "none";
+  document.getElementById("frame_game").style.display = "block";
+}
 
-function game() {
+function game_2() {
   document.getElementById("frame_game").style.display = "none";
   document.getElementById("defence_game").style.display = "block";
+  document.getElementById("canvas_2").style.display = "block";
   draw();
   document.addEventListener('keydown', keyDownHandler);
   window.addEventListener('resize', resizeHandler);

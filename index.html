@@ -9,13 +9,7 @@
   <link rel="stylesheet" href="./css/typingTag.css">
   <script src="./js/ASCII_keycode.js"></script>
   <script src="./js/listOfTags.js"></script>
-  <script>
-    function nextPage() {
-      document.getElementById("frame_intro").style.display = "none";
-      document.getElementById("frame_game").style.display = "block";
-    }
-  </script>
-
+  <script src="./js/easter_egg.js"></script>
 </head>
 
 <body>
@@ -32,20 +26,22 @@
 
   <!-- 게임 선택 화면 -->
   <div id="frame_game">
-    <div class="main">
-      <img src="img/defence_game.png" style="height:200px; width:400px">
-      <input id="start" type="button" value="START" onclick="game()">
+    <div class="main_2">
+      <div class="choose border">
+        <p class="sub-heading">Acid Rain</p>
+        <input type="image" src="img/defence_game.png" style="width:350px" onclick="game_1()">
+        <!--<img src="img/defence_game.png" style="width:400px;">-->
+      </div>
+      <div class="choose border">
+        <p class="sub-heading">Defence Game</p>
+        <input type="image" src="img/defence_game.png" style="width:350px" onclick="game_2()">
+      </div>
     </div>
   </div>
 
   <!-- 산성비 게임 화면 -->
   <div id="rain_game">
-
-  </div>
-
-  <!-- 디펜스 게임 화면 -->
-  <div id="defence_game">
-    <canvas id="canvas">
+    <canvas id="canvas_1">
       <pre>
         Your browser doesn't support HTML5's 'Canvas'.
         The HTML 'canvas' element is used to draw graphics, on the fly, via JavaScript.
@@ -57,15 +53,35 @@
         아래 문서를 참고하세요!
         ```
 
-      <a href="https://community.canvaslms.com/docs/DOC-10720">Which browsers does Canvas support?</a><br>
-      <a href="https://caniuse.com/#feat=canvas">Canvas(basic support)</a>
-    </pre>
+        <a href="https://community.canvaslms.com/docs/DOC-10720">Which browsers does Canvas support?</a><br>
+        <a href="https://caniuse.com/#feat=canvas">Canvas(basic support)</a>
+      </pre>
+    </canvas>
+    <script src="./js/acidRain.js"></script>
+  </div>
+
+  <!-- 디펜스 게임 화면 -->
+  <div id="defence_game">
+    <canvas id="canvas_2">
+      <pre>
+        Your browser doesn't support HTML5's 'Canvas'.
+        The HTML 'canvas' element is used to draw graphics, on the fly, via JavaScript.
+
+        Browsers which support 'Canvas'
+
+        ```
+        아쉽게도 HTML의 'Canvas' 기능을 지원하지 않는 브라우저를 사용하고 계십니다
+        아래 문서를 참고하세요!
+        ```
+
+        <a href="https://community.canvaslms.com/docs/DOC-10720">Which browsers does Canvas support?</a><br>
+        <a href="https://caniuse.com/#feat=canvas">Canvas(basic support)</a>
+      </pre>
     </canvas>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fpsmeter/0.3.1/fpsmeter.min.js"></script>
   <script src="./js/typingTag.js"></script>
-  <script src="./js/easter_egg.js"></script>
 </body>
 
 </html>
