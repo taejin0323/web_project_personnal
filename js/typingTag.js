@@ -195,19 +195,17 @@ function keyDownHandler (e) {
     key = htmlList[letters[i].code];
     var l = letters[i].code;
 
-    if (keysDown.localeCompare(key)) {
+    if(keysDown.localeCompare(key)==0) {
       type(i, l);
-
-      return;
-    }
-    if (e.keyCode === 13) {
       keysDown = [];
+      return;
+    }else if (keysDown.localeCompare(key)!=0 && e.keyCode==13){
+      keysDown = [];
+      score-=100;
       break;
     }
   }
-  if (!e.shiftKey) {
-    score-=100;
-  }
+
 }
 
 
@@ -220,8 +218,8 @@ function resizeHandler () {
 
 
 function game() {
-  document.getElementById("frame_intro").style.display = "none";
-  document.getElementById("frame_game").style.display = "block";
+  document.getElementById("frame_game").style.display = "none";
+  document.getElementById("defence_game").style.display = "block";
   draw();
   document.addEventListener('keydown', keyDownHandler);
   window.addEventListener('resize', resizeHandler);
